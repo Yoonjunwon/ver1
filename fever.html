@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>열</title>
+</head>
+<body>
+  <form>
+    <h3>체온</h3>
+    <label><input type="checkbox" name="pain" value="40도 이하">40도 이하</label>
+    <label><input type="checkbox" name="pain" value="40도 초과">40도 초과</label>
+    <p></p>
+    <h3>목의 통증</h3>
+    <label><input type="checkbox" name="pain" value="있음">있음</label>
+    <label><input type="checkbox" name="pain" value="없음">없음</label>
+    <p></p>
+    <h3>두통</h3>
+    <label><input type="checkbox" name="pain" value="있음">있음</label>
+    <label><input type="checkbox" name="pain" value="없음">없음</label>
+
+    <p></p>
+    <h3>동반증상(2가지 체크)</h3>
+    <label><input type="checkbox" name="pain" value="오한">오한</label>
+    <label><input type="checkbox" name="pain" value="압통">압통</label>
+    <label><input type="checkbox" name="pain" value="피부염증">피부염증</label>
+    <label><input type="checkbox" name="pain" value="물집">물집</label>
+    <label><input type="checkbox" name="pain" value="삼키기 곤란">삼키기 곤란</label>
+    <label><input type="checkbox" name="pain" value="편도성 비대">편도성 비대</label>
+    <label><input type="checkbox" name="pain" value="복부통증">복부통증</label>
+    <label><input type="checkbox" name="pain" value="설사">설사</label>
+    <label><input type="checkbox" name="pain" value="발한지속">발한지속</label>
+    <label><input type="checkbox" name="pain" value="탈수">탈수</label>
+    <label><input type="checkbox" name="pain" value="결막염">결막염</label>
+    <label><input type="checkbox" name="pain" value="비충혈">비충혈</label>
+    <label><input type="checkbox" name="pain" value="눈충혈">눈충혈</label>
+    <label><input type="checkbox" name="pain" value="가벼운 기침">가벼운 기침</label>
+    <label><input type="checkbox" name="pain" value="반점">반점</label>
+    <label><input type="checkbox" name="pain" value="발진">발진</label>
+    <label><input type="checkbox" name="pain" value="유충에게 물림">유충에게 물림</label>
+    <label><input type="checkbox" name="pain" value="온몸이 떨림">온몸이 떨림</label>
+    <label><input type="checkbox" name="pain" value="황달">황달</label>
+    <label><input type="checkbox" name="pain" value="근육통">근육통</label>
+    <label><input type="checkbox" name="pain" value="복통">복통</label>
+    <label><input type="checkbox" name="pain" value="물집">물집</label>
+    <label><input type="checkbox" name="pain" value="기운없음">기운없음</label>
+    <label><input type="checkbox" name="pain" value="식욕 부진">식욕 부진</label>
+    <label><input type="checkbox" name="pain" value="덩어리가 만저짐">덩어리가 만져짐</label>
+    <label><input type="checkbox" name="pain" value="온몸이 아픔">온몸이 아픔</label>
+    <label><input type="checkbox" name="pain" value="찌르는 듯한 통증">찌르는 듯한 통증</label>
+    <label><input type="checkbox" name="pain" value="경련">경련</label>
+    <label><input type="checkbox" name="pain" value="피부건조">피부건조</label>
+    <label><input type="checkbox" name="pain" value="피부홍조">피부홍조</label>
+
+    <p></p>
+    <button type="button" onclick="getChecked()">Submit</button>
+  </form>
+  
+  
+  <script type="text/javascript">
+    const doublearr = [['40도 이하', '있음', '있음', '오한', '압통'], 
+                       ['40도 이하', '없음', '없음', '피부염증', '물집'], 
+                       ['40도 이하', '있음', '없음', '삼키기 곤란', '편도성 비대'], 
+                       ['40도 이하', '없음', '있음', '복부통증', '설사'],
+                       ['40도 이하', '있음', '있음', '오한', '설사'],
+                       ['40도 이하', '있음', '없음', '결막염', '비충혈'],
+                       ['40도 이하', '없음', '있음', '발한지속', '탈수'], 
+                       ['40도 이하', '없음', '없음', '눈충혈', '가벼운 기침'], 
+                       ['40도 초과', '없음', '있음', '반점', '발진'], 
+                       ['40도 이하', '없음', '있음', '유충에게 물림', '온몸이 떨림'],
+                       ['40도 이하', '없음', '있음', '황달', '오한'],
+                       ['40도 초과', '없음', '있음', '근육통', '복통'],
+                       ['40도 이하', '없음', '없음', '물집', '기운없음'],  
+                       ['40도 이하', '있음', '있음', '오한', '식욕부진'], 
+                       ['40도 이하', '있음', '있음', '덩어리가 만져짐', '온몸이 아픔'], 
+                       ['40도 이하', '없음', '있음', '찌르는 듯한 통증', '경련'],
+                       ['40도 이하', '없음', '있음', '피부건조', '피부홍조']];
+
+    function getChecked() {//체크박스 값 배열로 만들기
+      const checkboxes = document.getElementsByName('pain');
+      
+      const checkedValues = [];
+
+      for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          checkedValues.push(checkboxes[i].value);
+        }
+      }
+      console.log(checkArrayEquality(checkedValues, doublearr));
+      console.log(checkedValues);
+      window.location.href = checkArrayEquality(checkedValues, doublearr)
+    }
+    
+
+    function checkArrayEquality(arr1, arr2) {
+      const results = [];
+      const bottleName = ['감염성 단핵구증.html', '단순포진.html', '급성편도염.html', '급성 위장염.html', '인플루엔자.html',
+       '열탈진.html', '홍역.html', '풍진.html', '성인형 스틸병.html', '쯔쯔가무시병.html', '렙토스피라증.html', 
+       '중증 열성 혈소판감소 증후군.html', '비브리오 패혈증.html', '말라리아.html', '림프종.html', '바이러스성 뇌수막염.html',
+        '열사병.html'];
+
+      // arr1의 각 요소를 arr2의 각 요소와 비교하여 결과를 results 배열에 저장
+  
+      for (let i = 0; i < arr2.length; i++) {
+        if (Array.isArray(arr2[i])) { // 해당 원소가 배열인 경우
+          if (arr1[0] == arr2[i][0] && arr1[1] == arr2[i][1] && arr1[2] == arr2[i][2] && arr1[3] == arr2[i][3] && arr1[4] == arr2[i][4]) 
+          {
+            results.push(bottleName[i]);
+          }
+        }
+      }
+      
+    
+        return results;
+   
+    }
+</script>
+  
+</body>
+</html>
