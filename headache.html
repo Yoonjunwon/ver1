@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>두통</title>
+</head>
+<body>
+  <form>
+    <h3>시작시기</h3>
+    <label><input type="checkbox" name="pain" value="급성"> 급성(갑자기)</label>
+    <label><input type="checkbox" name="pain" value="만성"> 만성(지속적)</label>
+    <p></p>
+    <h3>악화양상</h3>
+    <label><input type="checkbox" name="pain" value="악화 호전 반복">악화 호전 반복</label>
+    <label><input type="checkbox" name="pain" value="점점 악화">점점 악화</label>
+    <p></p>
+    <h3>구역 혹은 구토</h3>
+    <label><input type="checkbox" name="pain" value="구토 없음">없음</label>
+    <label><input type="checkbox" name="pain" value="구토 있음">있음</label>
+    <p></p>
+    <h3>반쪽 근력 약화</h3>
+    <label><input type="checkbox" name="pain" value="반쪽 근력 약화 없음">없음</label>
+    <label><input type="checkbox" name="pain" value="반쪽 근력 약화 있음">있음</label>
+    <p></p>
+    <h3>말 어눌함</h3>
+    <label><input type="checkbox" name="pain" value="말 어눌함 없음">없음</label>
+    <label><input type="checkbox" name="pain" value="말 어눌함 있음">있음</label>
+    <p></p>
+
+    <h3>동반증상(2가지 체크)</h3>
+    <label><input type="checkbox" name="pain" value="짓누르는 듯한 통증">짓누르는 듯한 통증</label>
+    <label><input type="checkbox" name="pain" value="머리 맥박과 함께 통증">머리 맥박과 함께 통증</label>
+    <label><input type="checkbox" name="pain" value="한쪽 머리 통증">한쪽 머리 통증</label>
+    <label><input type="checkbox" name="pain" value="음주">음주</label>
+    <label><input type="checkbox" name="pain" value="스트레스">스트레스</label>
+    <label><input type="checkbox" name="pain" value="발열">발열</label>
+    <label><input type="checkbox" name="pain" value="코막힘">코막힘</label>
+    <label><input type="checkbox" name="pain" value="시야 장애">시야 장애</label>
+    <label><input type="checkbox" name="pain" value="운동능력 저하">운동능력 저하</label>
+    <label><input type="checkbox" name="pain" value="머리 외상">머리 외상</label>
+    <label><input type="checkbox" name="pain" value="대상포진">대상포진</label>
+    <label><input type="checkbox" name="pain" value="목덜미 뻣뻣함">목덜미 뻣뻣함</label>
+    <label><input type="checkbox" name="pain" value="어지러움">어지러움</label>
+    <label><input type="checkbox" name="pain" value="마비">마비</label>
+    <p></p>
+
+    <button type="button" onclick="getChecked()">Submit</button>
+  </form>
+  
+  
+  <script type="text/javascript">
+    const doublearr = [
+      ['급성', '악화 호전 반복', '구토 없음', '반쪽 근력 약화 없음', '말 어눌함 없음', '짓누르는 듯한 통증', '머리 맥박과 함께 통증'], 
+      ['급성', '악화 호전 반복', '구토 있음', '반쪽 근력 약화 없음', '말 어눌함 없음', '머리 맥박과 함께 통증', '한쪽 머리 통증'],
+      ['만성', '악화 호전 반복', '구토 있음', '반쪽 근력 약화 없음', '말 어눌함 없음', '머리 맥박과 함께 통증', '한쪽 머리 통증'],
+      ['급성', '악화 호전 반복', '구토 없음', '반쪽 근력 약화 없음', '말 어눌함 없음', '음주', '스트레스'],
+      ['만성', '악화 호전 반복', '구토 있음', '반쪽 근력 약화 없음', '말 어눌함 없음', '음주', '스트레스'],
+      ['급성', '악화 호전 반복', '구토 있음', '반쪽 근력 약화 없음', '말 어눌함 없음', '발열', '코막힘'],
+      ['만성', '악화 호전 반복', '구토 있음', '반쪽 근력 약화 없음', '말 어눌함 없음', '발열', '코막힘'],
+      ['만성', '악화 호전 반복', '구토 있음', '반쪽 근력 약화 있음', '말 어눌함 있음', '시야 장애', '운동 장애'],
+      ['급성', '악화 호전 반복', '구토 있음', '반쪽 근력 약화 있음', '말 어눌함 없음', '머리 외상', '대상포진'],
+      ['급성', '악화 호전 반복', '구토 있음', '반쪽 근력 약화 있음', '말 어눌함 있음', '뻣뻣한 목', '어지러움'],
+      ['급성', '점점 악화', '구토 있음', '반쪽 근력 약화 있음', '말 어눌함 있음', '어지러움', '마비'],
+      ['급성', '점점 악화', '구토 있음', '반쪽 근력 약화 없음', '말 어눌함 없음', '음주', '스트레스'],
+      ['급성', '악화 호전 반복', '구토 있음', '반쪽 근력 약화 있음', '말 어눌함 있음', '시야 장애', '어지러움'],
+      ['급성', '점점 악화', '구토 있음', '반쪽 근력 약화 없음', '말 어눌함 없음', '음주', '스트레스'],
+      ['급성', '악화 호전 반복', '구토 있음', '반쪽 근력 약화 있음', '말 어눌함 있음', '시야 장애', '어지러움']
+      ];
+
+    function getChecked() {//체크박스 값 배열로 만들기
+      const checkboxes = document.getElementsByName('pain');
+      
+      const checkedValues = [];
+
+      for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          checkedValues.push(checkboxes[i].value);
+        }
+      }
+      console.log(checkedValues);
+      window.location.href = checkArrayEquality(checkedValues, doublearr)
+    }
+    
+
+    function checkArrayEquality(arr1, arr2) {
+      const results = [];
+      const bottleName = ['근육 긴장성 두통.html', '급성 편두통.html', '만성 편두통.html', '급성 군발성 두통 증후군.html', '만성 군발성 두통 증후군.html', '급성 부비동염.html', '만성 부비동염.html', '뇌종양.html', '삼차신경통.html', '지주막하 출혈.html', '뇌출혈.html', '뇌경색.html', '뇌수막염.html'];
+
+      // arr1의 각 요소를 arr2의 각 요소와 비교하여 결과를 results 배열에 저장
+  
+      for (let i = 0; i < arr2.length; i++) {
+        if (Array.isArray(arr2[i])) { // 해당 원소가 배열인 경우
+          if (arr1[0] == arr2[i][0] && arr1[1] == arr2[i][1] && arr1[2] == arr2[i][2] && arr1[3] == arr2[i][3] && arr1[4] == arr2[i][4] && arr1[5] == arr2[i][5] && arr1[6] == arr2[i][6]) 
+          {
+            results.push(bottleName[i]);
+          }
+        }
+      }
+    if(results.length === 0){
+      alert('검색된 결과가 없습니다! 다시 입력해주세요!');
+      window.location.href = checkArrayEquality(checkedValues, doublearr)
+    }else{
+      return results;
+    }
+    
+    }
+</script>
+  
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>황달</title>
+</head>
+<body>
+  <form>
+    <h3>시작시기</h3>
+    <label><input type="checkbox" name="pain" value="급성">급성</label>
+    <label><input type="checkbox" name="pain" value="만성">만성</label>
+    <p></p>
+    <h3>어지러움</h3>
+    <label><input type="checkbox" name="pain" value="있음">있음</label>
+    <label><input type="checkbox" name="pain" value="없음">없음</label>
+    <p></p>
+    <h3>복통</h3>
+    <label><input type="checkbox" name="pain" value="있음">있음</label>
+    <label><input type="checkbox" name="pain" value="없음">없음</label>
+    <p></p>
+    <h3>발열</h3>
+    <label><input type="checkbox" name="pain" value="있음">있음</label>
+    <label><input type="checkbox" name="pain" value="없음">없음</label>
+
+    <p></p>
+    <h3>동반증상(2가지 체크)</h3>
+    <label><input type="checkbox" name="pain" value="오한">오한</label>
+    <label><input type="checkbox" name="pain" value="오심">오심</label>
+    <label><input type="checkbox" name="pain" value="기운없음">기운없음</label>
+    <label><input type="checkbox" name="pain" value="체중감소">체중감소</label>
+    <label><input type="checkbox" name="pain" value="지방변">지방변</label>
+    <label><input type="checkbox" name="pain" value="숨이 참">숨이 참</label>
+    <label><input type="checkbox" name="pain" value="복부팽만감">복부팽만감</label>
+    <label><input type="checkbox" name="pain" value="관절통">관절통</label>
+    <label><input type="checkbox" name="pain" value="감기 증상">감기 증상</label>
+    <label><input type="checkbox" name="pain" value="피로감">피로감</label>
+    <label><input type="checkbox" name="pain" value="식욕부진">식욕부진</label>
+    <label><input type="checkbox" name="pain" value="위장관 출혈">위장관 출혈</label>
+    <label><input type="checkbox" name="pain" value="무월경">무월경</label>
+    <label><input type="checkbox" name="pain" value="간기능 저하">간기능 저하</label>
+    
+
+    <p></p>
+    <button type="button" onclick="getChecked()">Submit</button>
+  </form>
+  
+  
+  <script type="text/javascript">
+    const doublearr = [['만성', '있음', '있음', '있음', '오한', '오심'], 
+                       ['급성', '있음', '있음', '있음', '기운없음', '오한'], 
+                       ['만성', '없음', '있음', '없음', '체중감소', '지방변'], 
+                       ['급성', '없음', '없음', '없음', '숨이 참', '복부팽만감'], 
+                       ['급성', '있음', '있음', '있음', '관절통', '감기 증상'], 
+                       ['급성', '없음', '있음', '있음', '관절통', '피로감'], 
+                       ['급성', '없음', '없음', '없음', '식욕부진', '위장관 출혈'], 
+                       ['급성', '없음', '없음', '없음', '무월경', '간기능 저하'] ];
+
+    function getChecked() {//체크박스 값 배열로 만들기
+      const checkboxes = document.getElementsByName('pain');
+      
+      const checkedValues = [];
+
+      for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          checkedValues.push(checkboxes[i].value);
+        }
+      }
+      console.log(checkedValues);
+      window.location.href = checkArrayEquality(checkedValues, doublearr)
+    }
+    
+
+    function checkArrayEquality(arr1, arr2) {
+      const results = [];
+      const bottleName = ['담석증.html', '감염성 단핵구증.html', '만성 췌장염.html', '간경화.html', '급성 바이러스 간염.html',
+       '독성 간염.html', '자가면역성 간염.html', '윌슨병.html'];
+
+      // arr1의 각 요소를 arr2의 각 요소와 비교하여 결과를 results 배열에 저장
+  
+      for (let i = 0; i < arr2.length; i++) {
+        if (Array.isArray(arr2[i])) { // 해당 원소가 배열인 경우
+          if (arr1[0] == arr2[i][0] && arr1[1] == arr2[i][1] && arr1[2] == arr2[i][2] && arr1[3] == arr2[i][3] && arr1[4] == arr2[i][4]) 
+          {
+            results.push(bottleName[i]);
+          }
+        }
+      }
+      
+    
+        if(results.length === 0){
+            alert('검색된 결과가 없습니다! 다시 입력해주세요!');
+            window.location.href = checkArrayEquality(checkedValues,doublearr)
+        }
+        else{
+            return results;
+        }
+   
+    }
+</script>
+  
+</body>
+</html>

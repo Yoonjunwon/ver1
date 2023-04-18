@@ -65,7 +65,6 @@
           checkedValues.push(checkboxes[i].value);
         }
       }
-      console.log(checkArrayEquality(checkedValues, doublearr));
       console.log(checkedValues);
       window.location.href = checkArrayEquality(checkedValues, doublearr)
     }
@@ -73,7 +72,7 @@
 
     function checkArrayEquality(arr1, arr2) {
       const results = [];
-      const bottleName = ['역류성 식도염.html', '위염.html', '위염.html', '협심증.html', '늑막염.html', '부정맥.html', '폐렴.html', '폐 결핵.html', '위궤양.html', '기흉.html', '심낭염.html', '만성 심근경색.html', '급성 심근경색.html'];
+      const bottleName = ['역류성 식도염.html', '급성 위염.html', '만성 위염.html', '협심증.html', '늑막염.html', '부정맥.html', '폐렴.html', '폐 결핵.html', '위궤양.html', '기흉.html', '심낭염.html', '만성 심근경색.html', '급성 심근경색.html'];
 
       // arr1의 각 요소를 arr2의 각 요소와 비교하여 결과를 results 배열에 저장
   
@@ -84,12 +83,17 @@
             results.push(bottleName[i]);
           }
           else{
-            alert('결과가 없습니다 다시 입력해주세요');
-            break;
+            window.location.href = errPage.html;
           }
         }
       }
-      return results;
+
+      if(results.length === 0){
+        alert('검색된 결과가 없습니다! 다시 입력해주세요!');
+        window.location.href = checkArrayEquality(checkedValues, doublearr)
+      }else{
+        return results;
+      }
     }
 </script>
   
