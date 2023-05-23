@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>귀 질환</title>
+</head>
+<body>
+  <form>
+    <h3>시작시기</h3>
+    <label><input type="checkbox" name="pain" value="급성">급성(갑자기)</label>
+    <label><input type="checkbox" name="pain" value="만성">만성(지속적)</label>
+    <p></p>
+    <h3>청각저하</h3>
+    <label><input type="checkbox" name="pain" value="저하없음">없음</label>
+    <label><input type="checkbox" name="pain" value="저하있음">있음</label>
+    <p></p>
+    <h3>통증동반</h3>
+    <label><input type="checkbox" name="pain" value="통증없음">없음</label>
+    <label><input type="checkbox" name="pain" value="통증있음">있음</label>
+    <p></p>
+    <h3>어지러움</h3>
+    <label><input type="checkbox" name="pain" value="어지러움없음">없음</label>
+    <label><input type="checkbox" name="pain" value="어지러움있음">있음</label>
+    <p></p>
+
+    <h3>동반증상(2가지 체크)</h3>
+    <label><input type="checkbox" name="pain" value="가려움">가려움</label>
+    <label><input type="checkbox" name="pain" value="귀먹먹함">귀먹먹함</label>
+    <label><input type="checkbox" name="pain" value="귀에서 분비물">귀에서 분비물 나옴</label>
+    <label><input type="checkbox" name="pain" value="발열">발열</label>
+    <label><input type="checkbox" name="pain" value="이명">이명</label>
+    <label><input type="checkbox" name="pain" value="이상한 모양의 변">이상한 모양의 변</label>
+    <p></p>
+
+    <button type="button" onclick="getChecked()">Submit</button>
+  </form>
+  
+  
+  <script type="text/javascript">
+    const doublearr = [
+      ['급성', '저하있음', '통증있음', '어지러움없음', '가려움', '귀먹먹함'],
+      ['급성', '저하있음', '통증있음', '어지러움있음', '귀에서 분비물', '발열'],
+      ['만성', '저하있음', '통증있음', '어지러움있음', '귀에서 분비물', '이명'],
+      ['급성', '저하있음', '통증있음', '어지러움없음', '귀에서 분비물', '발열']
+      ];
+
+    function getChecked() {//체크박스 값 배열로 만들기
+      const checkboxes = document.getElementsByName('pain');
+      
+      const checkedValues = [];
+
+      for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          checkedValues.push(checkboxes[i].value);
+        }
+      }
+      console.log(checkedValues);
+      window.location.href = checkArrayEquality(checkedValues, doublearr)
+    }
+    
+
+    function checkArrayEquality(arr1, arr2) {
+      const results = [];
+      const bottleName = ['외이도염.html', '급성 중이염.html', '만성 중이염.html', '삼출성 중이염.html'];
+
+      // arr1의 각 요소를 arr2의 각 요소와 비교하여 결과를 results 배열에 저장
+  
+      for (let i = 0; i < arr2.length; i++) {
+        if (Array.isArray(arr2[i])) { // 해당 원소가 배열인 경우
+          if (arr1[0] == arr2[i][0] && arr1[1] == arr2[i][1] && arr1[2] == arr2[i][2] && arr1[3] == arr2[i][3] && arr1[4] == arr2[i][4] && arr1[5] == arr2[i][5]) 
+          {
+            results.push(bottleName[i]);
+          }
+        }
+      }
+    if(results.length === 0){
+      alert('검색된 결과가 없습니다! 다시 입력해주세요!');
+      window.location.href = checkArrayEquality(checkedValues, doublearr)
+    }else{
+      return results;
+    }
+    
+    }
+</script>
+  
+</body>
+</html>

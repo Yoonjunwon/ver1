@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사지 통증</title>
+</head>
+<body>
+  <form>
+    <h3>통증</h3>
+    <label><input type="checkbox" name="pain" value="있음">목 통증</label>
+    <label><input type="checkbox" name="pain" value="없음">턱 통증</label>
+    <label><input type="checkbox" name="pain" value="없음">복부 통증</label>
+    <label><input type="checkbox" name="pain" value="귀 통증">귀 통증</label>
+
+    <p></p>
+    <h3>동반증상(2가지 체크)</h3>
+    <label><input type="checkbox" name="pain" value="기운없음">기운없음</label>
+    <label><input type="checkbox" name="pain" value="복부 압통">복부 압통</label>
+    <label><input type="checkbox" name="pain" value="목 이물감">목 이물감</label>
+    <label><input type="checkbox" name="pain" value="침 삼키기 어려움">침 삼키기 어려움</label>
+    <label><input type="checkbox" name="pain" value="입맛 저하">입맛 저하</label>
+    <label><input type="checkbox" name="pain" value="하얀반점">하얀반점</label>
+    <label><input type="checkbox" name="pain" value="신음식 먹으면 통증이 심해짐">신음식 먹으면 통증이 심해짐</label>
+    <label><input type="checkbox" name="pain" value="목의 이물질">목의 이물질</label>
+    <label><input type="checkbox" name="pain" value="노란 이물질">노란 이물질</label>
+    <label><input type="checkbox" name="pain" value="기침">기침</label>
+    <label><input type="checkbox" name="pain" value="딸기모양혀">딸기모양혀</label>
+    <label><input type="checkbox" name="pain" value="편도선">편도선</label>
+    <label><input type="checkbox" name="pain" value="피로감">피로감</label>
+    <label><input type="checkbox" name="pain" value="체모감소">체모감소</label>
+    <label><input type="checkbox" name="pain" value="부종">부종</label>
+    <label><input type="checkbox" name="pain" value="입맛저하">입맛저하</label>
+    <label><input type="checkbox" name="pain" value="삼키기 어려움">삼키기 어려움</label>
+    <label><input type="checkbox" name="pain" value="발열과 오한">발열과 오한</label>
+    <label><input type="checkbox" name="pain" value="목소리 변화">목소리 변화</label>
+    <p></p>
+    <button type="button" onclick="getChecked()">Submit</button>
+  </form>
+  
+  
+  <script type="text/javascript">
+    const doublearr = [[/**/'목 통증', '기운없음', '복부 압통'], [/**/'목 통증', '목 이물감', '침 삼키기 어려움'], [/**/'목 통증', '목소리 변화', '입맛 저하'], [/**/'목 통증', '입맛저하', '하얀반점'], [/**/'턱 통증', '신음식 먹으면 통증이 심해짐'], [/**/'목 통증', '목의 이물질', '노란 이물질'], [/**/'목통증', '목소리 변화', '기침'], [/**/'목 통증', '딸기모양혀', '편도선'], [/**/'복부 통증', '피로감', '체모감소'], [/**/'귀 통증', '부종', '입맛저하'], ['귀 통증', '삼키기 어려움', '발열과 오한'], ['목 통증', '목소리 변화', '목 이물감']];
+
+    function getChecked() {//체크박스 값 배열로 만들기
+      const checkboxes = document.getElementsByName('pain');
+      
+      const checkedValues = [];
+
+      for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          checkedValues.push(checkboxes[i].value);
+        }
+      }
+      console.log(checkArrayEquality(checkedValues, doublearr));
+      console.log(checkedValues);
+      window.location.href = checkArrayEquality(checkedValues, doublearr)
+    }
+    
+
+    function checkArrayEquality(arr1, arr2) {
+      const results = [];
+      const bottleName = ['감염성 단핵구증.html', '후비루.html', '후두개염.html', '구내염.html', '타석증.html', '편도 결석.html', '인후두 역류 질환.html', '성홍열', '부신기능부전', '이하선염', '편도주위 농양', '후두염', '후두암'];
+
+      // arr1의 각 요소를 arr2의 각 요소와 비교하여 결과를 results 배열에 저장
+  
+      for (let i = 0; i < arr2.length; i++) {
+        if (Array.isArray(arr2[i])) { // 해당 원소가 배열인 경우
+          if (arr1[0] == arr2[i][0] && arr1[1] == arr2[i][1] && arr1[2] == arr2[i][2] && arr1[3] == arr2[i][3] && arr1[4] == arr2[i][4] && arr1[5] == arr2[i][5] && arr1[6] == arr2[i][6]) 
+          {
+            results.push(bottleName[i]);
+          }
+        }
+      }
+      if(results.length === 0){
+      alert('검색된 결과가 없습니다! 다시 입력해주세요!');
+      window.location.href = checkArrayEquality(checkedValues, doublearr)
+    }else{
+      return results;
+    }
+    }
+</script>
+  
+</body>
+</html>

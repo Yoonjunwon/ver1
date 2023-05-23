@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>오심 및 구토</title>
+</head>
+<body>
+  <form>
+    <h3>구토 동반</h3>
+    <label><input type="checkbox" name="pain" value="있음">있음</label>
+    <label><input type="checkbox" name="pain" value="없음">없음</label>
+    <p></p>
+    <h3>복통</h3>
+    <label><input type="checkbox" name="pain" value="있음">있음</label>
+    <label><input type="checkbox" name="pain" value="없음">없음</label>
+    <p></p>
+    <h3>발열</h3>
+    <label><input type="checkbox" name="pain" value="있음">있음</label>
+    <label><input type="checkbox" name="pain" value="없음">없음</label>
+
+    <p></p>
+    <h3>동반증상(2가지 체크)</h3>
+    <label><input type="checkbox" name="pain" value="식후 심와부의 그득함">식후 심와부의 그득함</label>
+    <label><input type="checkbox" name="pain" value="복부 팽만감">복부 팽만감</label>
+    <label><input type="checkbox" name="pain" value="빛이나 소리 공포증">빛이나 소리 공포증</label>
+    <label><input type="checkbox" name="pain" value="오심">오심</label>
+    <label><input type="checkbox" name="pain" value="설사">설사</label>
+    <label><input type="checkbox" name="pain" value="복부팽만감">복부팽만감</label>
+    <label><input type="checkbox" name="pain" value="온몸이 떨림">온몸이 떨림</label>
+    <label><input type="checkbox" name="pain" value="손 떨림">손 떨림</label>
+    <label><input type="checkbox" name="pain" value="어지러움">어지러움</label>
+    <label><input type="checkbox" name="pain" value="기억장애">기억장애</label>
+    <label><input type="checkbox" name="pain" value="두통">두통</label>
+    <label><input type="checkbox" name="pain" value="운동장애">운동장애</label>
+    <label><input type="checkbox" name="pain" value="흑색변">흑색변</label>
+    <label><input type="checkbox" name="pain" value="관절통">관절통</label>
+    <label><input type="checkbox" name="pain" value="황달">황달</label>
+    <label><input type="checkbox" name="pain" value="압통">압통</label>
+    <label><input type="checkbox" name="pain" value="옆구리 통증">옆구리 통증</label>
+   
+    <p></p>
+    <button type="button" onclick="getChecked()">Submit</button>
+  </form>
+  
+  
+  <script type="text/javascript">
+    const doublearr = [['있음', '있음', '없음', '식후 심와부의 그득함', '복부 팽만감'], 
+                       ['있음', '없음', '없음', '빛이나 소리 공포증', '오심'],
+                       ['있음', '있음', '있음', '설사', '복부팽만감'],
+                       ['있음', '있음', '없음', '온몸이 떨림', '손 떨림'],
+                       ['있음', '없음', '없음', '오심', '어지러움'],
+                       ['있음', '없음', '없음', '기억장애', '두통'],
+                       ['있음', '없음', '없음', '운동장애', '오심'],
+                       ['있음', '있음', '없음', '오심', '흑색변'],
+                       ['있음', '없음', '있음', '관절통', '황달'],
+                       ['없음', '있음', '없음', '압통', '옆구리 통증']];
+
+    function getChecked() {//체크박스 값 배열로 만들기
+      const checkboxes = document.getElementsByName('pain');
+      
+      const checkedValues = [];
+
+      for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          checkedValues.push(checkboxes[i].value);
+        }
+      }
+      console.log(checkedValues);
+      window.location.href = checkArrayEquality(checkedValues, doublearr)
+    }
+    
+
+    function checkArrayEquality(arr1, arr2) {
+      const results = [];
+      const bottleName = ['위염.html', '편두통.html', '급성 위장염.html', '신체화 장애.html', '전정신경염.html',
+       '뇌진탕.html', '뇌종양.html', '위궤양.html', '간염.html', '맹장염.html'];
+
+      // arr1의 각 요소를 arr2의 각 요소와 비교하여 결과를 results 배열에 저장
+  
+      for (let i = 0; i < arr2.length; i++) {
+        if (Array.isArray(arr2[i])) { // 해당 원소가 배열인 경우
+          if (arr1[0] == arr2[i][0] && arr1[1] == arr2[i][1] && arr1[2] == arr2[i][2] && arr1[3] == arr2[i][3] && arr1[4] == arr2[i][4]) 
+          {
+            results.push(bottleName[i]);
+          }
+        }
+      }
+      
+    
+      if(results.length === 0){
+            alert('검색된 결과가 없습니다! 다시 입력해주세요!');
+            window.location.href = checkArrayEquality(checkedValues,doublearr)
+        }
+        else{
+            return results;
+        }
+   
+   
+    }
+</script>
+  
+</body>
+</html>

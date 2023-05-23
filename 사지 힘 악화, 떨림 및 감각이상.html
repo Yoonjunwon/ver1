@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>사지 힘 약화, 떨림 및 감각이상</title>
+</head>
+<body>
+  <form>
+    <h3>힘 약화</h3>
+    <label><input type="checkbox" name="pain" value="힘 약화">힘 약화</label>
+    <label><input type="checkbox" name="pain" value="힘 약화/감각이상">힘 약화/감각이상</label>
+    <p></p>
+    <h3>두통 동반</h3>
+    <label><input type="checkbox" name="pain" value="없음">없음</label>
+    <label><input type="checkbox" name="pain" value="있음">있음</label>
+    <p></p>
+    <h3>말 어눌함</h3>
+    <label><input type="checkbox" name="pain" value="없음">없음</label>
+    <label><input type="checkbox" name="pain" value="있음">있음</label>
+    <p></p>
+    
+    <p></p>
+    <h3>동반증상(2가지 체크)</h3>
+    <label><input type="checkbox" name="pain" value="다리 통증">다리 통증</label>
+    <label><input type="checkbox" name="pain" value="하지마비">하지마비</label>
+    <label><input type="checkbox" name="pain" value="저림">저림</label>
+    <label><input type="checkbox" name="pain" value="요통">요통</label>
+    <label><input type="checkbox" name="pain" value="손의 통증">손의 통증</label>
+    <label><input type="checkbox" name="pain" value="저림">저림</label>
+    <label><input type="checkbox" name="pain" value="요통">요통</label>
+    <label><input type="checkbox" name="pain" value="자세 불안정">자세 불안정</label>
+    <label><input type="checkbox" name="pain" value="구부정한 자세">구부정한 자세</label>
+    <label><input type="checkbox" name="pain" value="우울">우울</label>
+    <label><input type="checkbox" name="pain" value="삼키기 곤란">삼키기 곤란</label>
+    <label><input type="checkbox" name="pain" value="물 많이 마심">안검하수</label>
+    <label><input type="checkbox" name="pain" value="배변장애">배변장애</label>
+    <label><input type="checkbox" name="pain" value="운동장애">운동장애</label>
+    <label><input type="checkbox" name="pain" value="안구진탕">안구진탕</label>
+    <label><input type="checkbox" name="pain" value="성기능 장애">성기능 장애</label>
+    <label><input type="checkbox" name="pain" value="안면마비">안면마비</label>
+    <label><input type="checkbox" name="pain" value="다리통증">다리통증</label>
+    <label><input type="checkbox" name="pain" value="가슴 두근거림">가슴 두근거림</label>
+    <label><input type="checkbox" name="pain" value="호흡곤란">호흡곤란</label>
+    <label><input type="checkbox" name="pain" value="배뇨장애">배뇨장애</label>
+    <label><input type="checkbox" name="pain" value="감각이상">감각이상</label>
+    <label><input type="checkbox" name="pain" value="구토">구토</label>
+    <label><input type="checkbox" name="pain" value="의식변화">의식변화</label>
+    <label><input type="checkbox" name="pain" value="어지러움">어지러움</label>
+    <label><input type="checkbox" name="pain" value="마비">마비</label>
+    <label><input type="checkbox" name="pain" value="반신불수">반신불수</label>
+    <label><input type="checkbox" name="pain" value="어지럼증">어지럼증</label>
+
+
+    <p></p>
+    <button type="button" onclick="getChecked()">Submit</button>
+  </form>
+  
+  
+  <script type="text/javascript">
+    const doublearr = 
+    [
+      [/*탈출증*/'힘 약화/감각이상', '없음', '없음', '다리 통증', '하지마비'], 
+      [/*수근관*/'힘 약화/감각이상', '없음', '없음', '손의 통증', '저림'],
+      ['힘 약화/떨림', '없음', '있음', '자세 불안정', '구부정한 자세'], 
+      ['힘 약화/떨림', '있음', '없음', '창백', '의식 저하'], 
+      ['힘 약화', '없음', '있음', '자세불안정', '우울'], 
+      ['힘 약화', '없음', '있음', '삼키기 곤란', '안검하수'], 
+      ['힘 약화', '없음', '없음', '배변장애', '운동장애'], 
+      ['힘 약화', '없음', '없음', '안면마비', '다리통증'], 
+      ['힘 약화', '있음', '있음', '구토', '의식변화'], 
+      ['힘 약화', '있음', '있음', '반신불수', '어지럼증']];
+
+    function getChecked() {//체크박스 값 배열로 만들기
+      const checkboxes = document.getElementsByName('pain');
+      
+      const checkedValues = [];
+
+      for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          checkedValues.push(checkboxes[i].value);
+        }
+      }
+      console.log(checkArrayEquality(checkedValues, doublearr));
+      console.log(checkedValues);
+      window.location.href = checkArrayEquality(checkedValues, doublearr)
+    }
+    
+
+    function checkArrayEquality(arr1, arr2) {
+      const results = [];
+      const bottleName = ['요추 추간판 탈출증.html', '손목 수근관증후군.html', '파킨슨병.html', '저혈당증.html', '헌팅톤병.html', '중증근무력증.html', '다발성 경화증.html', '길랑바레 증후군.html', '뇌출혈.html', '뇌경색.html'];
+
+      // arr1의 각 요소를 arr2의 각 요소와 비교하여 결과를 results 배열에 저장
+  
+      for (let i = 0; i < arr2.length; i++) {
+        if (Array.isArray(arr2[i])) { // 해당 원소가 배열인 경우
+          if (arr1[0] == arr2[i][0] && arr1[1] == arr2[i][1] && arr1[2] == arr2[i][2] && arr1[3] == arr2[i][3] && arr1[4] == arr2[i][4]) 
+          {
+            results.push(bottleName[i]);
+          }
+        }
+      }
+      if(results.length === 0){
+      alert('검색된 결과가 없습니다! 다시 입력해주세요!');
+      window.location.href = checkArrayEquality(checkedValues, doublearr)
+    }else{
+      return results;
+    }
+    }
+</script>
+  
+</body>
+</html>

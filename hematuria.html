@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>혈뇨</title>
+</head>
+<body>
+  <form>
+    <h3>시작시기</h3>
+    <label><input type="checkbox" name="pain" value="급성">급성(갑자기)</label>
+    <label><input type="checkbox" name="pain" value="만성">만성(지속적)</label>
+    <p></p>
+    <h3>혈뇨색깔</h3>
+    <label><input type="checkbox" name="pain" value="선홍색">선홍색</label>
+    <label><input type="checkbox" name="pain" value="검붉은색">검붉은색</label>
+    <p></p>
+    <h3>핏덩어리</h3>
+    <label><input type="checkbox" name="pain" value="핏덩어리 없음">없음</label>
+    <label><input type="checkbox" name="pain" value="핏덩어리 있음">있음</label>
+    <p></p>
+    <h3>옆구리 혹은 배뇨 시 통증</h3>
+    <label><input type="checkbox" name="pain" value="통증 없음">없음</label>
+    <label><input type="checkbox" name="pain" value="통증 있음">있음</label>
+    <p></p>
+
+    <h3>동반증상(2가지 체크)</h3>
+    <label><input type="checkbox" name="pain" value="배뇨곤란">배뇨곤란</label>
+    <label><input type="checkbox" name="pain" value="발열">발열</label>
+    <label><input type="checkbox" name="pain" value="야간뇨">야간뇨</label>
+    <label><input type="checkbox" name="pain" value="긴박뇨">긴박뇨</label>
+    <label><input type="checkbox" name="pain" value="전신부종">전신부종</label>
+    <label><input type="checkbox" name="pain" value="단백뇨">단백뇨</label>
+    <label><input type="checkbox" name="pain" value="근육통">근육통</label>
+    <label><input type="checkbox" name="pain" value="빈뇨">빈뇨</label>
+    <label><input type="checkbox" name="pain" value="탁한소변">탁한소변</label>
+    <p></p>
+
+    <button type="button" onclick="getChecked()">Submit</button>
+  </form>
+  
+  
+  <script type="text/javascript">
+    const doublearr = [
+      ['급성', '검붉은색', '핏덩어리 있음', '통증 있음', '배뇨곤란', '발열'],
+      ['급성', '검붉은색', '핏덩어리 있음', '통증 있음', '배뇨곤란', '야간뇨'],
+      ['급성', '선홍색', '핏덩어리 있음', '통증 있음', '배뇨곤란', '긴박뇨'],
+      ['만성', '선홍색', '핏덩어리 있음', '통증 있음', '배뇨곤란', '긴박뇨'],
+      ['급성', '검붉은색', '핏덩어리 있음', '통증 있음', '전신부종', '탁한소변'],
+      ['만성', '선홍색', '핏덩어리 있음', '통증 있음', '배뇨곤란', '긴박뇨'],
+      ['급성', '검붉은색', '핏덩어리 있음', '통증 있음', '발열', '근육통'],
+      ['만성', '검붉은색', '핏덩어리 있음', '통증 있음', '발열', '근육통'],
+      ['급성', '선홍색', '핏덩어리 있음', '통증 있음', '배뇨곤란', '빈뇨'],
+      ['급성', '검붉은색', '핏덩어리 없음', '통증 없음', '야간뇨', '탁한소변']
+      ];
+
+    function getChecked() {//체크박스 값 배열로 만들기
+      const checkboxes = document.getElementsByName('pain');
+      
+      const checkedValues = [];
+
+      for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          checkedValues.push(checkboxes[i].value);
+        }
+      }
+      console.log(checkedValues);
+      window.location.href = checkArrayEquality(checkedValues, doublearr)
+    }
+    
+
+    function checkArrayEquality(arr1, arr2) {
+      const results = [];
+      const bottleName = ['요로결석.html', '전립선 비대증.html', '급성 방광염.html', '만성 방광염.html', '사구체신염.html', '만성 전립선염.html', '급성 신우신염.html', '만성 신우신염.html', '방광암.html', '발작성 야간 혈색뇨.html'];
+
+      // arr1의 각 요소를 arr2의 각 요소와 비교하여 결과를 results 배열에 저장
+  
+      for (let i = 0; i < arr2.length; i++) {
+        if (Array.isArray(arr2[i])) { // 해당 원소가 배열인 경우
+          if (arr1[0] == arr2[i][0] && arr1[1] == arr2[i][1] && arr1[2] == arr2[i][2] && arr1[3] == arr2[i][3] && arr1[4] == arr2[i][4] && arr1[5] == arr2[i][5]) 
+          {
+            results.push(bottleName[i]);
+          }
+        }
+      }
+    if(results.length === 0){
+      alert('검색된 결과가 없습니다! 다시 입력해주세요!');
+      window.location.href = checkArrayEquality(checkedValues, doublearr)
+    }else{
+      return results;
+    }
+    
+    }
+</script>
+  
+</body>
+</html>

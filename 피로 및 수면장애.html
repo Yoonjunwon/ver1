@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>피로 및 수면장애</title>
+</head>
+<body>
+  <form>
+    <h3>수면 이상</h3>
+    <label><input type="checkbox" name="pain" value="쉽게 깸">쉽게 깸</label>
+    <label><input type="checkbox" name="pain" value="잠들기 힘듦">잠들기 힘듦</label>
+
+    <p></p>
+    <h3>동반증상(2가지 체크)</h3>
+    <label><input type="checkbox" name="pain" value="낮에 졸림 있음">낮에 졸림 있음</label>
+    <label><input type="checkbox" name="pain" value="전신통증">전신통증</label>
+    <label><input type="checkbox" name="pain" value="피로감">피로감</label>
+    <label><input type="checkbox" name="pain" value="수면 장애">수면 장애</label>
+    <label><input type="checkbox" name="pain" value="권태감">권태감</label>
+    <label><input type="checkbox" name="pain" value="식욕부진">식욕부진</label>
+    <label><input type="checkbox" name="pain" value="피부 긴장도 저하">피부 긴장도 저하</label>
+    <label><input type="checkbox" name="pain" value="발기부전">발기부전</label>
+    <label><input type="checkbox" name="pain" value="몽유병">몽유병</label>
+    <label><input type="checkbox" name="pain" value="다리통증">다리통증</label>
+    <label><input type="checkbox" name="pain" value="저림">저림</label>
+    <label><input type="checkbox" name="pain" value="호흡곤란">호흡곤란</label>
+    <label><input type="checkbox" name="pain" value="소변량 감소">소변량 감소</label>
+    <label><input type="checkbox" name="pain" value="야노증">야노증</label>
+    <label><input type="checkbox" name="pain" value="두통">두통</label>
+
+    <p></p>
+    <button type="button" onclick="getChecked()">Submit</button>
+  </form>
+  
+  
+  <script type="text/javascript">
+    const doublearr = [
+      ['잠들기 힘듦', '낮에 졸림 있음', '전신통증'], 
+      ['잠들기 힘듦', '피부 긴장도 저하', '발기부전'], 
+      ['잠들기 힘듦', '다리통증', '저림'], 
+      ['쉽게 깸', '호흡곤란', '소변량 감소']];
+
+    function getChecked() {//체크박스 값 배열로 만들기
+      const checkboxes = document.getElementsByName('pain');
+      
+      const checkedValues = [];
+
+      for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          checkedValues.push(checkboxes[i].value);
+        }
+      }
+      console.log(checkArrayEquality(checkedValues, doublearr));
+      console.log(checkedValues);
+      window.location.href = checkArrayEquality(checkedValues, doublearr)
+    }
+    
+
+    function checkArrayEquality(arr1, arr2) {
+      const results = [];
+      const bottleName = ['만성피로 증후군.html', '수면 무호흡증.html', '하지불안 증후군.html', '심부전.html'];
+
+      // arr1의 각 요소를 arr2의 각 요소와 비교하여 결과를 results 배열에 저장
+  
+      for (let i = 0; i < arr2.length; i++) {
+        if (Array.isArray(arr2[i])) { // 해당 원소가 배열인 경우
+          if (arr1[0] == arr2[i][0] && arr1[1] == arr2[i][1] && arr1[2] == arr2[i][2]) 
+          {
+            results.push(bottleName[i]);
+          }
+        }
+      }
+      if(results.length === 0){
+      alert('검색된 결과가 없습니다! 다시 입력해주세요!');
+      window.location.href = checkArrayEquality(checkedValues, doublearr)
+    }else{
+      return results;
+    }
+    }
+</script>
+  
+</body>
+</html>

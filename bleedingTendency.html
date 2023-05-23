@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>출혈경향</title>
+</head>
+<body>
+  <form>
+    <h3>시작시기</h3>
+    <label><input type="checkbox" name="pain" value="급성">급성(갑자기)</label>
+    <label><input type="checkbox" name="pain" value="만성">만성(지속적)</label>
+    <p></p>
+    <h3>어지러움증</h3>
+    <label><input type="checkbox" name="pain" value="어지러움 없음">없음</label>
+    <label><input type="checkbox" name="pain" value="어지러움 있음">있음</label>
+    <p></p>
+    <h3>가족력</h3>
+    <label><input type="checkbox" name="pain" value="가족력 없음">없음</label>
+    <label><input type="checkbox" name="pain" value="가족력 있음">있음</label>
+    <p></p>
+
+    <h3>동반증상(2가지 체크)</h3>
+    <label><input type="checkbox" name="pain" value="근력약화">근력약화</label>
+    <label><input type="checkbox" name="pain" value="우울">우울</label>
+    <label><input type="checkbox" name="pain" value="월경과다">월경과다</label>
+    <label><input type="checkbox" name="pain" value="점상출혈">점상출혈</label>
+    <label><input type="checkbox" name="pain" value="복부 불편감">복부 불편감</label>
+    <label><input type="checkbox" name="pain" value="피로감">피로감</label>
+    <label><input type="checkbox" name="pain" value="혈변">혈변</label>
+    <label><input type="checkbox" name="pain" value="구토">구토</label>
+    <label><input type="checkbox" name="pain" value="심한복통">심한복통</label>
+    <label><input type="checkbox" name="pain" value="빈혈">빈혈</label>
+    <label><input type="checkbox" name="pain" value="식욕부진">식욕부진</label>
+    <label><input type="checkbox" name="pain" value="뼈의 통증">뼈의 통증</label>
+    <p></p>
+
+    <button type="button" onclick="getChecked()">Submit</button>
+  </form>
+  
+  
+  <script type="text/javascript">
+    const doublearr = [
+      ['급성', '어지러움 있음', '가족력 없음', '근력약화', '우울'],
+      ['급성', '어지러움 없음', '가족력 있음', '월경과다', '점상출혈'],
+      ['급성', '어지러움 있음', '가족력 있음', '복부 불편감', '피로감'],
+      ['급성', '어지러움 없음', '가족력 있음', '혈변', '구토'],
+      ['급성', '어지러움 있음', '가족력 없음', '혈변', '심한복통'],
+      ['급성', '어지러움 있음', '가족력 있음', '빈혈', '식욕부진'],
+      ['급성', '어지러움 있음', '가족력 있음', '피로감', '뼈의 통증']
+      ];
+
+    function getChecked() {//체크박스 값 배열로 만들기
+      const checkboxes = document.getElementsByName('pain');
+      
+      const checkedValues = [];
+
+      for (let i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+          checkedValues.push(checkboxes[i].value);
+        }
+      }
+      console.log(checkedValues);
+      window.location.href = checkArrayEquality(checkedValues, doublearr)
+    }
+    
+
+    function checkArrayEquality(arr1, arr2) {
+      const results = [];
+      const bottleName = ['쿠싱증후군.html', '폰 빌레브란트 병.html', '간경화.html', '용혈성요독 증후군.html', '헤노흐 쉔라인 자반증.html', '만성신부전.html', '백혈병.html'];
+
+      // arr1의 각 요소를 arr2의 각 요소와 비교하여 결과를 results 배열에 저장
+  
+      for (let i = 0; i < arr2.length; i++) {
+        if (Array.isArray(arr2[i])) { // 해당 원소가 배열인 경우
+          if (arr1[0] == arr2[i][0] && arr1[1] == arr2[i][1] && arr1[2] == arr2[i][2] && arr1[3] == arr2[i][3] && arr1[4] == arr2[i][4]) 
+          {
+            results.push(bottleName[i]);
+          }
+        }
+      }
+    if(results.length === 0){
+      alert('검색된 결과가 없습니다! 다시 입력해주세요!');
+      window.location.href = checkArrayEquality(checkedValues, doublearr)
+    }else{
+      return results;
+    }
+    
+    }
+</script>
+  
+</body>
+</html>
