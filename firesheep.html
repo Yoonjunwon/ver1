@@ -28,19 +28,18 @@
     <h3>동반증상(2가지 체크)</h3>
     <label><input type="checkbox" name="pain" value="기침">기침</label>
     <label><input type="checkbox" name="pain" value="삼키기 곤란">삼키기 곤란</label>
-    <label><input type="checkbox" name="pain" value="점액변">점액변</label>
-    <label><input type="checkbox" name="pain" value="변비">변비</label>
+    <label><input type="checkbox" name="pain" value="설사 변비">설사 변비</label>
     <label><input type="checkbox" name="pain" value="체중감소">체중감소</label>
     <label><input type="checkbox" name="pain" value="지방변">지방변</label>
-    <label><input type="checkbox" name="pain" value="오심">오심</label>
-    <label><input type="checkbox" name="pain" value="구토">구토</label>
+    <label><input type="checkbox" name="pain" value="오심 구토">오심 구토</label>
+    <label><input type="checkbox" name="pain" value="복부 불편감">복부 불편감</label>
     <label><input type="checkbox" name="pain" value="탈수">탈수</label>
     <label><input type="checkbox" name="pain" value="복부팽만감">복부팽만감</label>
-    <label><input type="checkbox" name="pain" value="체중감소">체중감소</label>
     <label><input type="checkbox" name="pain" value="항문통증">항문통증</label>
     <label><input type="checkbox" name="pain" value="잔변감">잔변감</label>
+    <label><input type="checkbox" name="pain" value="명치 끝 통증">명치 끝 통증</label>
     <label><input type="checkbox" name="pain" value="흑색변">흑색변</label>
-    <label><input type="checkbox" name="pain" value="작열감">작열감</label>
+    <label><input type="checkbox" name="pain" value="작열감">화끈거림</label>
    
     <p></p>
     <button type="button" onclick="getChecked()">Submit</button>
@@ -48,16 +47,17 @@
   
   
   <script type="text/javascript">
-    const doublearr = [['만성', '없음', '있음', '없음', '기침', '삼키기 곤란'], 
-    ['만성', '있음', '있음', '있음', '점액변', '변비'], 
+    const doublearr = [
+    ['만성', '없음', '있음', '없음', '기침', '삼키기 곤란'], 
+    ['만성', '있음', '있음', '있음', '설사 변비', '복부팽만감'], 
     ['만성', '있음', '있음', '없음', '체중감소', '지방변'], 
-    ['급성', '있음', '있음', '없음', '오심', '구토'], 
+    ['급성', '있음', '있음', '없음', '오심 구토', '복부 불편감'], 
     ['급성', '있음', '있음', '있음', '탈수', '복부팽만감'], 
-    ['만성', '았음', '있음', '있음', '체중감소', '구토'], 
-    ['급성', '있음', '있음', '있음', '오심', '복부팽만감'],
+    ['만성', '았음', '있음', '있음', '체중감소', '오심 구토'], 
+    ['급성', '있음', '있음', '있음', '오심 구토', '복부팽만감'],
     ['만성', '있음', '있음', '있음', '항문통증', '잔변감'], 
     ['만성', '있음', '있음', '있음', '체중감소', '복부팽만감'], 
-    ['급성', '있음', '있음', '있음', '흑색변', '작열감']];
+    ['급성', '있음', '있음', '있음', '명치 끝 통증', '흑색변']];
 
     function getChecked() {//체크박스 값 배열로 만들기
       const checkboxes = document.getElementsByName('pain');
@@ -83,7 +83,14 @@
   
       for (let i = 0; i < arr2.length; i++) {
         if (Array.isArray(arr2[i])) { // 해당 원소가 배열인 경우
-          if (arr1[0] == arr2[i][0] && arr1[1] == arr2[i][1] && arr1[2] == arr2[i][2] && arr1[3] == arr2[i][3] && arr1[4] == arr2[i][4]) 
+          if (
+            arr1[0] == arr2[i][0] && 
+            arr1[1] == arr2[i][1] && 
+            arr1[2] == arr2[i][2] && 
+            arr1[3] == arr2[i][3] && 
+            arr1[4] == arr2[i][4] && 
+            arr1[5] == arr2[i][5]
+            ) 
           {
             results.push(bottleName[i]);
           }

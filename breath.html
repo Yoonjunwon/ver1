@@ -33,7 +33,7 @@
     <label><input type="checkbox" name="pain" value="흉수">흉수</label>
     <label><input type="checkbox" name="pain" value="호흡곤란">호흡곤란</label>
     <label><input type="checkbox" name="pain" value="객혈">객혈</label>
-    <label><input type="checkbox" name="pain" value="폐부종">폐부종</label>
+    <label><input type="checkbox" name="pain" value="기침">기침</label>
     <label><input type="checkbox" name="pain" value="청색증">청색증</label>
     <label><input type="checkbox" name="pain" value="천명음">천명음</label>
     
@@ -45,11 +45,11 @@
   
   <script type="text/javascript">
     const doublearr = [['호전 악화 반복', '있음', '있음', '있음', '불안 장애','천식'], 
-    ['점점 심해짐', '있음', '있음', '있음', '불안 장애','천식'],
-    ['점점 심해짐', '있음', '있음', '있음', '불안 장애','천식'],
-    ['점점 심해짐', '있음', '없음', '있음', '불안 장애','천식'],
-    ['점점 심해짐', '있음', '없음', '없음', '불안 장애','천식'],
-    ['점점 심해짐', '있음', '없음', '없음', '불안 장애','천식']];
+    ['점점 심해짐', '있음', '있음', '있음', '가래','체중감소'],
+    ['점점 심해짐', '있음', '있음', '있음', '흉수','호흡곤란'],
+    ['점점 심해짐', '있음', '없음', '있음', '호흡곤란','객혈'],
+    ['점점 심해짐', '있음', '없음', '없음', '기침','청색증'],
+    ['점점 심해짐', '있음', '없음', '없음', '호흡곤란','천명음']];
 
     function getChecked() {//체크박스 값 배열로 만들기
       const checkboxes = document.getElementsByName('pain');
